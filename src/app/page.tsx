@@ -1,4 +1,4 @@
-import BuggyMarketplace from '../components/BuggyMarketplace'
+import BuggyMarketplace from '@/components/BuggyMarketplace'
 
 export default function Home() {
   return (

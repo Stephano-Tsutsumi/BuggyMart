@@ -3,9 +3,17 @@
 import React, { useState } from 'react';
 import { ShoppingCart, Menu, X, Search } from 'lucide-react';
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  stock: number | string;
+  category: string;
+}
 
 const BuggyMarketplace = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<Product[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -77,7 +85,7 @@ const BuggyMarketplace = () => {
   });
 
   // Intentionally buggy add to cart function
-  const addToCart = (product) => {
+  const addToCart = (product: Product) => {
     if (product.id === 2) {
       // Bug: Smart Home Hub shows error but still gets added to cart
       setShowError(true);
@@ -94,7 +102,7 @@ const BuggyMarketplace = () => {
 
     if (product.price < 0) {
       // Bug: Negative price items crash the cart
-      setCart(null);
+      setCart([]);
       return;
     }
 
@@ -103,7 +111,7 @@ const BuggyMarketplace = () => {
   };
 
   // Bug: Remove function removes all instances of an item instead of just one
-  const removeFromCart = (productId) => {
+  const removeFromCart = (productId: number) => {
     setCart(cart.filter(item => item.id !== productId));
   };
 
@@ -300,13 +308,11 @@ const BuggyMarketplace = () => {
         </div>
       )}
 
-      {/* Error Alert */}
+      {/* Replace Alert with a simple div for now */}
       {showError && (
-        <Alert className="fixed bottom-4 right-4 w-96 bg-red-100 border-red-400">
-          <AlertDescription>
-            Error: Unable to add Smart Home Hub to cart. Please try again later.
-          </AlertDescription>
-        </Alert>
+        <div className="fixed bottom-4 right-4 w-96 bg-red-100 border-red-400 p-4 rounded">
+          <p>Error: Unable to add Smart Home Hub to cart. Please try again later.</p>
+        </div>
       )}
     </div>
   );

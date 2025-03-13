@@ -4,8 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 
 const LandingPage = () => {
-  // Bug 1: Misspelled variable name that will show wrong count
-  const featuredItemsCount = 3;
   const featuredItmsCount = 2;
 
   return (

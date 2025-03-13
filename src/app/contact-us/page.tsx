@@ -36,7 +36,7 @@ export default function ContactUsPage() {
                 Thank you for your message!
               </div>
               <p className="text-gray-600">
-                We'll get back to you soon. Redirecting...
+                We&apos;ll get back to you soon. Redirecting...
               </p>
             </div>
           ) : (

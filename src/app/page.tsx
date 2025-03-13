@@ -1,9 +1,6 @@
-import BuggyMarketplace from '@/components/BuggyMarketplace'
+import React from 'react';
+import LandingPage from '@/components/LandingPage';
 
 export default function Home() {
-  return (
-    <main>
-      <BuggyMarketplace />
-    </main>
-  )
+  return <LandingPage />;
 }

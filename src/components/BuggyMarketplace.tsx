@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ShoppingCart, Menu, X, Search } from 'lucide-react';
+import { ShoppingCart, Menu, X, Search, LogOut } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface Product {
   id: number;
@@ -13,6 +14,7 @@ interface Product {
 }
 
 const BuggyMarketplace = () => {
+  const router = useRouter();
   const [cart, setCart] = useState<Product[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -124,6 +126,10 @@ const BuggyMarketplace = () => {
     }, 0);
   };
 
+  const handleLogout = () => {
+    router.push('/');
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Navigation */}
@@ -162,7 +168,13 @@ const BuggyMarketplace = () => {
                   {category.name}
                 </button>
               ))}
-              
+              <button 
+                onClick={handleLogout}
+                className="flex items-center text-red-600 hover:text-red-700 font-medium"
+              >
+                <LogOut className="h-5 w-5 mr-1" />
+                Logout
+              </button>
               <button 
                 className="p-2 relative"
                 onClick={() => setShowCart(!showCart)}
